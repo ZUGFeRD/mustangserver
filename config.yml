@@ -1,0 +1,4 @@
+template: Hello, %s!
+defaultName: Stranger
+swagger:
+    resourcePackage: api
