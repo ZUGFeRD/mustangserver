@@ -6,6 +6,7 @@ import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
 import io.federecio.dropwizard.swagger.SwaggerBundle;
 import io.federecio.dropwizard.swagger.SwaggerBundleConfiguration;
+import mustang.MustangResource;
 
 public class ApiApplication extends Application<ApiConfiguration> {
     public static void main(String[] args) throws Exception {
@@ -14,7 +15,7 @@ public class ApiApplication extends Application<ApiConfiguration> {
 
     @Override
     public String getName() {
-        return "hello-world";
+        return "Mustang API";
     }
 
     @Override
@@ -31,10 +32,7 @@ public class ApiApplication extends Application<ApiConfiguration> {
     @Override
     public void run(ApiConfiguration configuration,
                     Environment environment) {
-    	  final WorldResource resource = new WorldResource(
-    		        configuration.getTemplate(),
-    		        configuration.getDefaultName()
-    		    );
+    	  final MustangResource resource = new MustangResource();
 
   	    environment.jersey().register(MultiPartFeature.class);
     		    environment.jersey().register(resource);

@@ -1,4 +1,2 @@
-template: Hello, %s!
-defaultName: Stranger
 swagger:
-    resourcePackage: api
+    resourcePackage: mustang

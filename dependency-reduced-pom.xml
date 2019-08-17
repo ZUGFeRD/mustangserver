@@ -43,6 +43,12 @@
       </plugin>
     </plugins>
   </build>
+  <repositories>
+    <repository>
+      <id>mustang-mvn-repo</id>
+      <url>https://raw.github.com/ZUGFeRD/mustangproject/mvn-repo/</url>
+    </repository>
+  </repositories>
   <dependencies>
     <dependency>
       <groupId>io.dropwizard</groupId>

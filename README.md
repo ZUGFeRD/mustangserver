@@ -1,5 +1,5 @@
 # mustangAPI
-A rest API for Mustangproject
+A rest API for [Mustangproject](https://www.mustangproject.org)
 
 ## Archictecture
 
