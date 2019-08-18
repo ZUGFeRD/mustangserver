@@ -1,6 +1,8 @@
 # mustangAPI
 A rest API for [Mustangproject](https://www.mustangproject.org), i.e. for ZUGFeRD/Factur-X
 
+![Screenshot](README_screenshot.png "Screenshot Swagger API")
+
 ## Archictecture
 
 Using a
