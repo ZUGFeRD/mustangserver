@@ -3,7 +3,7 @@ A rest API for [Mustangproject](https://www.mustangproject.org), i.e. for ZUGFeR
 
 ![Screenshot](README_screenshot.png "Screenshot Swagger API")
 
-## Archictecture
+## Architecture
 
 Using a
  * [Dropwizard](https://dropwizard.io) and a 
