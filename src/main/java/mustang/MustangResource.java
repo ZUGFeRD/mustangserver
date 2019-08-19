@@ -22,14 +22,23 @@ import org.mustangproject.ZUGFeRD.ZUGFeRDImporter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import io.dropwizard.jersey.params.IntParam;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
+import io.swagger.annotations.License;
+import io.swagger.annotations.Info;
+import io.swagger.annotations.SwaggerDefinition;
 
 @Path("/mustang")
 @Produces(MediaType.APPLICATION_JSON)
 @Api(value = "Mustang")
+@SwaggerDefinition(info=@Info(
+		description = "Rest API to read/write hybrid (ZUGFeRD/Factur-X) e-invoices with a Mustang Server",
+		version = "V0.0.2",
+		title = "Mustangproject API",
+		license = @License(name = "Apache 2.0", url = "http://www.apache.org")
+
+		))
 public class MustangResource {
 
 	Logger logger = LoggerFactory.getLogger(MustangResource.class.getName());
