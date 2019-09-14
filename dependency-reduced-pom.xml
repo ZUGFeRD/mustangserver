@@ -4,7 +4,7 @@
   <groupId>org.mustangproject</groupId>
   <artifactId>api</artifactId>
   <name>Mustang API</name>
-  <version>0.0.1</version>
+  <version>0.0.2-SNAPSHOT</version>
   <description>A rest API for ZUGFeRD, Factur-X and XRechnung</description>
   <build>
     <plugins>

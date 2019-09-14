@@ -2,6 +2,9 @@ package mustang;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -21,6 +24,11 @@ import org.mustangproject.ZUGFeRD.ZUGFeRDExporterFromA1Factory;
 import org.mustangproject.ZUGFeRD.ZUGFeRDImporter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.pdf.PdfWriter;
+import com.itextpdf.tool.xml.XMLWorkerHelper;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -115,6 +123,32 @@ public class MustangResource {
 	                        "attachment; filename=\"invoice.pdf\"")
 	                .build();
 		
+	}
+	
+	@POST
+	@Path("/write")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	@ApiOperation(value="Combine PDF file and custom XML to zf/fx PDF",notes="Input PDF must be PDF/A-1, output PDF will be a ZUGFeRD/Factur-X PDF/A-3 file called invoice.pdf")
+	public void write() {
+	  Document document = new Document();
+	    try {
+			PdfWriter writer = PdfWriter.getInstance(document,
+			  new FileOutputStream("/tmp/output.pdf"));
+			document.open();
+			XMLWorkerHelper.getInstance().parseXHtml(writer, document,
+			  new FileInputStream("/tmp/input.html"));
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (DocumentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	    document.close();
 	}
 
 }

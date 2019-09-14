@@ -28,11 +28,11 @@ Feel free to send pull requests for more functionality.
 
 ## Start
 
-`java -jar target/api-0.0.1-SNAPSHOT.jar server config.yml` 
+`java -jar target/api-0.0.2-SNAPSHOT.jar server config.yml` 
 
 ## Test
 
-use http://127.0.0.1:8080/swagger to try the methods
+use http://127.0.0.1:8080/swagger or https://localhost:8443/swagger to try the methods
 
 ## Support
 
