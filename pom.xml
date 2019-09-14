@@ -3,9 +3,9 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.mustangproject</groupId>
-	<artifactId>api</artifactId>
+	<artifactId>server</artifactId>
 	<version>0.0.2-SNAPSHOT</version>
-	<name>Mustang API</name>
+	<name>Mustang Server</name>
 	<description>A rest API for ZUGFeRD, Factur-X and XRechnung</description>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -42,7 +42,31 @@
 			<version>${dropwizard.version}</version>
 			<type>pom</type>
 		</dependency>
+		<dependency>
+			<groupId>io.dropwizard</groupId>
+			<artifactId>dropwizard-auth</artifactId>
+			<version>${dropwizard.version}</version>
+			<type>pom</type>
+		</dependency>
 
+
+<!-- 
+junit
+
+ -->
+ <dependency>
+        <groupId>org.junit</groupId>
+        <artifactId>junit5-api</artifactId>
+        <version>5.0.0-ALPHA</version>
+        <scope>test</scope>
+    </dependency>
+    <dependency>
+        <groupId>org.junit</groupId>
+        <artifactId>junit5-engine</artifactId>
+        <version>5.0.0-ALPHA</version>
+        <scope>test</scope>
+    </dependency>
+ <!-- the rest -->
 		<dependency>
 			<groupId>org.apache.pdfbox</groupId>
 			<artifactId>pdfbox-tools</artifactId>

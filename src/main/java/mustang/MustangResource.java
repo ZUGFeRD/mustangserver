@@ -8,6 +8,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
+import javax.annotation.security.RolesAllowed;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -46,7 +47,9 @@ import io.swagger.annotations.SwaggerDefinition;
 		title = "Mustangproject API",
 		license = @License(name = "Apache 2.0", url = "http://www.apache.org")
 
-		))
+		),
+		schemes = {SwaggerDefinition.Scheme.HTTP, SwaggerDefinition.Scheme.HTTPS}
+		)
 public class MustangResource {
 
 	Logger logger = LoggerFactory.getLogger(MustangResource.class.getName());
@@ -56,6 +59,7 @@ public class MustangResource {
 
 	@POST
 	@Path("/extract")
+	//@RolesAllowed("ADMIN")
 	@Consumes(MediaType.MULTIPART_FORM_DATA)
 	@Produces(MediaType.APPLICATION_XML)
 	@ApiOperation(value="Extracts XML from a zf/fx PDF",notes="Input PDF must be ZUGFeRD or Factur-X")
@@ -65,15 +69,16 @@ public class MustangResource {
 		ZUGFeRDImporter zi;
 		logger.debug("Reading...");
 		zi = new ZUGFeRDImporter(fileInputStream);
-		return zi.getUTF8();
+		return "<response>"+zi.getUTF8()+"</response>";
 	}
 
 
 	@POST
 	@Path("/combine")
+	@RolesAllowed("ADMIN")
 	@Consumes(MediaType.MULTIPART_FORM_DATA)
 	@Produces(MediaType.APPLICATION_OCTET_STREAM)
-	@ApiOperation(value="Combine PDF file and custom XML to zf/fx PDF",notes="Input PDF must be PDF/A-1, output PDF will be a ZUGFeRD/Factur-X PDF/A-3 file called invoice.pdf")
+	@ApiOperation(value="Combine PDF file and custom XML to zf/fx PDF",notes="Input PDF must be PDF/A-1, output PDF will be a ZUGFeRD/Factur-X PDF/A-3 file called invoice.pdf. Demo authentication good-guy:secret")
 	public Response combineFile(@ApiParam(required=true,value="Input PDF/A-1 file") @FormDataParam("file") final InputStream fileInputStream,
 			@FormDataParam("file") final FormDataContentDisposition contentDispositionHeader, 
 			@ApiParam(required=true, value="The zf/fx XML to add to the file") @FormDataParam("xml") String XML, 
@@ -126,29 +131,16 @@ public class MustangResource {
 	}
 	
 	@POST
-	@Path("/write")
+	@Path("/test")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	@ApiOperation(value="Combine PDF file and custom XML to zf/fx PDF",notes="Input PDF must be PDF/A-1, output PDF will be a ZUGFeRD/Factur-X PDF/A-3 file called invoice.pdf")
-	public void write() {
-	  Document document = new Document();
-	    try {
-			PdfWriter writer = PdfWriter.getInstance(document,
-			  new FileOutputStream("/tmp/output.pdf"));
-			document.open();
-			XMLWorkerHelper.getInstance().parseXHtml(writer, document,
-			  new FileInputStream("/tmp/input.html"));
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (DocumentException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	    document.close();
+	@ApiOperation(value="Returns a hello world",notes="Just a test")
+	public Response test() {
+		
+		return Response.status(Response.Status.OK)
+			      .entity("{\"payload\":\"test\"}")
+                .build();
+	
 	}
 
 }

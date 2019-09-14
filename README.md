@@ -28,11 +28,13 @@ Feel free to send pull requests for more functionality.
 
 ## Start
 
-`java -jar target/api-0.0.2-SNAPSHOT.jar server config.yml` 
+`java -jar target/server-0.0.2-SNAPSHOT.jar server config.yml` 
 
-## Test
+## Use
 
-use http://127.0.0.1:8080/swagger or https://localhost:8443/swagger to try the methods
+use http://127.0.0.1:8080/swagger to try the methods (https://localhost:8443/swagger would work but is self-signed).
+Access http://localhost:8080/swagger.yaml to build your clients.
+For demo purposes, extract does not require authentication but combine requires http authentication with user name "good-guy" and password "secret".
 
 ## Support
 

@@ -2,7 +2,9 @@
 =====
 .2019
 
-Https support, completed mandatory swagger attributes
+- Https support, 
+- User authentication (for combine method, username good-guy password secret)
+- completed mandatory swagger attributes. 
 
 
 0.0.1
