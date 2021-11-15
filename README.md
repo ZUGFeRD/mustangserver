@@ -1,6 +1,6 @@
 # mustangAPI
 A rest API for [Mustangproject](https://www.mustangproject.org), i.e. for ZUGFeRD/Factur-X
-
+*outdated*, since there were no contributions in two years in the meantime we rewrote it with Mustang 2.3 in spring boot and made it proprietary. Send me a mail to jochen at zugferd.org for a test version. 
 ![Screenshot](README_screenshot.png "Screenshot Swagger API")
 
 ## Architecture
