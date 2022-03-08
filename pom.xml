@@ -90,7 +90,7 @@ junit
 		<dependency>
 			<groupId>org.apache.poi</groupId>
 			<artifactId>poi-scratchpad</artifactId>
-			<version>3.15</version>
+			<version>5.2.1</version>
 		</dependency>
 	</dependencies>
 	<build>
